@@ -1,6 +1,7 @@
 const jokeEl = document.getElementById('joke')
 const titleEL = document.getElementById('title')
 const jokeBtn = document.getElementById('jokeBtn')
+const loadContainer = document.getElementById('load-container')
 
 jokeBtn.addEventListener('click', generateJoke)
 
@@ -24,6 +25,8 @@ async function generateJoke() {
   const re = await res.json();
     data.push(...re);
     if (culength <= 0) {
+      loadContainer.style.display = 'none'
+      jokeEl.style.display = 'block'
       let story  = data.pop();
       jokeEl.innerHTML = story.content;
       titleEL.innerHTML = story.title;
