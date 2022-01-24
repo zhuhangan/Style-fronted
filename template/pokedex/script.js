@@ -59,7 +59,7 @@ const createPokemonCard = (pokemon) => {
     </div>
     <div class="info">
         <span class="storyId">#${id}</span>
-        <h3 class="name">${name}</h3>
+        <h4  class="long-text name">${name}</h4>
         <small class="标签">Type: <span>${type}</span> </small>
     </div>
     `
