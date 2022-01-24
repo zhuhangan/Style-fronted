@@ -1,9 +1,11 @@
 const jokeEl = document.getElementById('joke')
 const titleEL = document.getElementById('title')
 const jokeBtn = document.getElementById('jokeBtn')
+const backHome = document.getElementById('backHome')
 const loadContainer = document.getElementById('load-container')
 
 jokeBtn.addEventListener('click', generateJoke)
+backHome.addEventListener('click', backHomeClick)
 
 data =[];
 let promise = generateJoke();
@@ -33,6 +35,11 @@ async function generateJoke() {
 
     }
   }
+}
+
+
+async function backHomeClick(){
+   window.location.href ="https://baby.yyuan.wang/pokedex/index.html"
 }
 
 // USING .then()
