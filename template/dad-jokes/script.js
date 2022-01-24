@@ -20,7 +20,7 @@ async function generateJoke() {
       Accept: 'application/json',
     },
   };
-  const res = await fetch('https://index.yyuan.wang/story/all', config)
+  const res = await fetch('https://api.yyuan.wang/story/all', config)
   const re = await res.json();
     data.push(...re);
     if (culength <= 0) {
