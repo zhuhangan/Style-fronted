@@ -18,6 +18,11 @@ body {
 h1 {
   letter-spacing: 3px;
 }
+.story-div:hover
+{
+  border: #00adb5;
+  background-color:yellow;
+}
 .center{
   text-align:center;
   margin: 0 auto;

@@ -18,6 +18,11 @@ const colors = [
 ]
 
 const main_types = Object.keys(colors)
+document.addEventListener('click', jumpToDetail)
+
+async function jumpToDetail(){
+    window.location.href ="https://baby.yyuan.wang/dad-jokes/index.html"
+}
 
 const fetchPokemons = async () => {
     for (let i = 1; i <= pokemon_count; i++) {
@@ -49,11 +54,11 @@ const createPokemonCard = (pokemon) => {
     pokemonEl.style.backgroundColor = color;
 
     const pokemonInnerHTML = `
-    <div class="img-container center">
+    <div class="img-container center story-div ">
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png"" alt="${name}">
     </div>
     <div class="info">
-        <span class="number">#${id}</span>
+        <span class="storyId">#${id}</span>
         <h3 class="name">${name}</h3>
         <small class="标签">Type: <span>${type}</span> </small>
     </div>
