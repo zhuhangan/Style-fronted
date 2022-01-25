@@ -5,8 +5,31 @@ const backHome = document.getElementById('backHome')
 const loadContainer = document.getElementById('load-container')
 
 jokeBtn.addEventListener('click', generateJoke)
-backHome.addEventListener('click', backHomeClick)
+backHome.addEventListener('click', backHomeClick);
+//替换指定传入参数的值,url为地址,paramName为参数,replaceWith为新值
+const  replaceParamVal = (url,arg,arg_val)=> {
+  var pattern=arg+'=([^&]*)';
+  var replaceText=arg+'='+arg_val;
+  if(url.match(pattern)){
+    var tmp='/('+ arg+'=)([^&]*)/gi';
+    tmp=url.replace(eval(tmp),replaceText);
+    return tmp;
+  }else{
+    if(url.match('[\?]')){
+      return url+'&'+replaceText;
+    }else{
+      return url+'?'+replaceText;
+    }
+  }
+}
 
+const getURLParameters = url =>
+    (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
+        (a, v) => (
+            (a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a
+        ),
+        {}
+    );
 data =[];
 let promise = generateJoke();
 // USING ASYNC/AWAIT
@@ -23,9 +46,16 @@ async function generateJoke() {
       Accept: 'application/json',
     },
   };
-  const res = await fetch('https://api.yyuan.wang/story/all', config)
+    let param = await getURLParameters(window.location.href);
+    let id = Number(param.id || 1);
+    let nextId = id+1;
+    const nextURL = replaceParamVal(window.location.href,"id",nextId);
+    const nextTitle = '下一个故事';
+    const nextState = { nextId: nextId };
+    window.history.replaceState(nextState, nextTitle, nextURL);
+  const res = await fetch('https://api.yyuan.wang/story/detail/'+id, config)
   const re = await res.json();
-    data.push(...re);
+    data.push(re);
     if (culength <= 0) {
       loadContainer.style.display = 'none'
       jokeEl.style.display = 'block'
