@@ -20,7 +20,7 @@ const colors = [
 const main_types = Object.keys(colors)
 
  const jumpToDetail =  (e) => {
-    let id  =  e.target.querySelector(".storyId").innerText;
+    let id  =  e.currentTarget.querySelector(".storyId").innerText;
      let url = "https://baby.yyuan.wang/dad-jokes/index.html?id="+id;
 
      window.open(url, '_blank').focus();
