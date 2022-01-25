@@ -7,12 +7,13 @@ const loadContainer = document.getElementById('load-container')
 jokeBtn.addEventListener('click', generateJoke)
 backHome.addEventListener('click', backHomeClick);
 //替换指定传入参数的值,url为地址,paramName为参数,replaceWith为新值
-const  replaceParamVal = (url,arg,arg_val)=> {
+const  replaceParamVal = (url,arg,old,arg_val)=> {
   var pattern=arg+'=([^&]*)';
   var replaceText=arg+'='+arg_val;
+  var oldText=arg+'='+old;
   if(url.match(pattern)){
     var tmp='/('+ arg+'=)([^&]*)/gi';
-    tmp=url.replace(eval(tmp),replaceText);
+    tmp=url.replace(oldText,replaceText);
     return tmp;
   }else{
     if(url.match('[\?]')){
@@ -49,7 +50,7 @@ async function generateJoke() {
     let param = await getURLParameters(window.location.href);
     let id = Number(param.id || 1);
     let nextId = id+1;
-    const nextURL = replaceParamVal(window.location.href,"id",nextId);
+    const nextURL = replaceParamVal(window.location.href,"id",id,nextId);
     const nextTitle = '下一个故事';
     const nextState = { nextId: nextId };
     window.history.replaceState(nextState, nextTitle, nextURL);

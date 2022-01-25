@@ -18,11 +18,13 @@ const colors = [
 ]
 
 const main_types = Object.keys(colors)
-document.addEventListener('click', jumpToDetail)
 
-async function jumpToDetail(){
-    window.location.href ="https://baby.yyuan.wang/dad-jokes/index.html"
-}
+ const jumpToDetail =  (e) => {
+    let id  =  e.target.querySelector(".storyId").innerText;
+     let url = "https://baby.yyuan.wang/dad-jokes/index.html?id="+id;
+
+     window.open(url, '_blank').focus();
+ }
 
 const fetchPokemons = async () => {
     for (let i = 1; i <= pokemon_count; i++) {
@@ -35,7 +37,7 @@ const getPokemon = async (id) => {
     const url = `https://api.yyuan.wang/story/all`
     const res = await fetch(url)
     const resData = await res.json();
-    for (let i = 0; i < resData.length; i++) {
+    for (let i = 0; i < resData.length && i<100; i++) {
         let data = resData[i];
         createPokemonCard(data)
     }
@@ -46,9 +48,9 @@ const createPokemonCard = (pokemon) => {
     pokemonEl.classList.add('pokemon')
 
     const name = pokemon.title;
+    let tag = pokemon.tag;
+    tag = tag.replace("相关标签", "标签");
     const id = pokemon.id;
-    const poke_types = 111;
-    const type = 1;
     const color = colors[Math.round(Math.random() * 10)]
 
     pokemonEl.style.backgroundColor = color;
@@ -58,9 +60,9 @@ const createPokemonCard = (pokemon) => {
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png"" alt="${name}">
     </div>
     <div class="info">
-        <span class="storyId">#${id}</span>
+        <span class="storyId">${id}</span>
         <h4  class="long-text name">${name}</h4>
-        <small class="标签">Type: <span>${type}</span> </small>
+        <small class="tag"<span>${tag}</span> </small>
     </div>
     `
 
@@ -69,4 +71,11 @@ const createPokemonCard = (pokemon) => {
     poke_container.appendChild(pokemonEl)
 }
 
-fetchPokemons()
+fetchPokemons().then(r => {
+
+    poke_container.addEventListener('click', (e)=>{
+        jumpToDetail(e)
+    }
+
+)
+})
