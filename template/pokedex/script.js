@@ -37,7 +37,7 @@ const getPokemon = async (id) => {
     const url = `https://api.yyuan.wang/story/all`
     const res = await fetch(url)
     const resData = await res.json();
-    for (let i = 0; i < resData.length && i<100; i++) {
+    for (let i = 0; i < resData.length && i<50; i++) {
         let data = resData[i];
         createPokemonCard(data)
     }
@@ -57,7 +57,7 @@ const createPokemonCard = (pokemon) => {
 
     const pokemonInnerHTML = `
     <div class="img-container center story-div ">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png"" alt="${name}">
+        <img src="https://baby.yyuan.wang/assets/img/${pokemon.id}.jpg" alt="${name}">
     </div>
     <div class="info">
         <span class="storyId">${id}</span>
