@@ -26,9 +26,13 @@ body {
     transform: translateX(-100%);
   }
 }
+
 .img-container {
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
+  width: 106px;
+  height: 64px;
+  display: block;
+  margin:0 auto;
+  align-self:center;
   text-align: center;
 }
 .nav-scroller {

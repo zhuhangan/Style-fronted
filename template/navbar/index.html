@@ -92,22 +92,22 @@
   </div>
 
   <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <h3 class="border-bottom pb-2 mb-0">推荐</h3>
-   <div>
+    <h3 class="border-bottom pb-2 mb-0">绘本</h3>
+   <div class ="border-bottom" id="recommed-container">
 
-     <div class="d-flex text-muted pt-3 bg-light">
-       <div class="img-container ">
-       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"  class="img-fluid" alt="1">
+     <div class="d-flex  text-muted pt-3 bg-light">
+       <div class="img-container border-bottom">
+       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"  class="p1" alt="1">
         </div>
-       <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+       <div class="pb-3 p-2 mb-0 small lh-sm  w-100">
          <div class="d-flex justify-content-between">
            <strong class="text-gray-dark">Full Name</strong>
-           <a  class="px-1" href="#">Follow</a>
          </div>
          <span class="d-block pt-1 text-success">标签：1111</span>
          <p class="mb-0 small lh-sm  ">
            Some representative placeholder content, with some information about this user. Imagine this being some sort
            of status update, perhaps?
+           <a href="#" class=" align-items-baseline link-blue pb-2">开始阅读</a>
          </p>
        </div>
      </div>
@@ -116,13 +116,45 @@
       <a href="#">查看更多</a>
     </small>
   </div>
-  <iframe src="../footers/index.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe>
+  <div class="my-3  bg-body rounded shadow-sm">
+    <h3 class="border-bottom pb-2 mb-0">推荐</h3>
+   <div class ="border-bottom recommed-container">
+
+     <div class="d-flex p-2 text-muted pt-3 bg-light">
+       <div class="img-container border-bottom">
+       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"  class="p1" alt="1">
+        </div>
+       <div class="pb-3 p-2 mb-0 small lh-sm  w-100">
+         <div class="d-flex justify-content-between">
+           <strong class="text-gray-dark">Full Name</strong>
+         </div>
+         <span class="d-block pt-1 text-success">标签：1111</span>
+         <p class="mb-0 small lh-sm  ">
+           Some representative placeholder content, with some information about this user. Imagine this being some sort
+           of status update, perhaps?
+           <a href="#" class=" align-items-baseline link-blue pb-2">开始阅读</a>
+         </p>
+       </div>
+     </div>
+   </div>
+    <small class="d-block text-end mt-3">
+      <a href="https://baby.yyuan.wang/pokedex/index.html">查看更多</a>
+    </small>
+  </div>
+
+
+
+
+  <div class="">
+    <iframe src="../footers/index.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:100px;width:100%;border:none;overflow:hidden;"></iframe>
+  </div>
 
 </main>
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
       <script src="offcanvas.js"></script>
+      <script src="script.js"></script>
   </body>
 
 </html>
