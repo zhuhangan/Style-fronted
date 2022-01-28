@@ -23,7 +23,7 @@ const main_types = Object.keys(colors)
     let id  =  e.currentTarget.querySelector(".storyId").innerText;
      let url = "https://baby.yyuan.wang/story/index.html?id="+id;
 
-     window.open(url, '_blank').focus();
+     window.open(url, '_blank');
  }
 
 const fetchPokemons = async () => {
@@ -68,14 +68,15 @@ const createPokemonCard = (pokemon) => {
 
     pokemonEl.innerHTML = pokemonInnerHTML
 
-    poke_container.appendChild(pokemonEl)
+    poke_container.appendChild(pokemonEl);
+    pokemonEl.addEventListener('click', (e)=>{
+        jumpToDetail(e)
+    });
 }
 
 fetchPokemons().then(r => {
 
-    poke_container.addEventListener('click', (e)=>{
-        jumpToDetail(e)
-    }
 
-)
+
+
 })
