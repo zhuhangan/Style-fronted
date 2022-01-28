@@ -51,13 +51,17 @@ const createPokemonCard = (pokemon) => {
     let tag = pokemon.tag;
     tag = tag.replace("相关标签", "标签");
     const id = pokemon.id;
-    const color = colors[Math.round(Math.random() * 10)]
+    let imId = id;
+    if (imId < 10) {
+        imId = "0" + imId;
+    }
+    const color = colors[Math.round(Math.random() * 10)];
 
     pokemonEl.style.backgroundColor = color;
 
     const pokemonInnerHTML = `
     <div class="img-container center story-div ">
-        <img src="https://baby.yyuan.wang/assets/img/100${pokemon.id}.png" alt="${name}">
+        <img src="https://baby.yyuan.wang/assets/img/100${imId}.png" alt="${name}">
     </div>
     <div class="info">
         <span class="storyId">${id}</span>
