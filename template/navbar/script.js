@@ -1,5 +1,5 @@
-const poke_container = document.getElementById('recommed-container')
-const pokemon_count = 1
+
+const pokemon_count = ["huiben","tonghuagushi","baobao"]
 const colors = [
     '#FDDFDF',
     '#DEFDE0',
@@ -27,22 +27,25 @@ const main_types = Object.keys(colors)
  }
 
 const fetchPokemons = async () => {
-    for (let i = 1; i <= pokemon_count; i++) {
-        await getPokemon(i)
+    for (let type of  pokemon_count) {
+        await getPokemon(type)
     }
 }
 
-const getPokemon = async (id) => {
-    const url = `https://api.yyuan.wang/picstory/all`
+const getPokemon = async (type) => {
+    const url = `https://api.yyuan.wang/story/${type}/all`
     const res = await fetch(url)
     const resData = await res.json();
-    for (let i = 0; i < resData.length && i<10; i++) {
+    const poke_container = document.getElementById(type+'-container')
+    for (let i = 0; i < resData.length && i<6; i++) {
         let data = resData[i];
-        createPokemonCard(data,i)
+       let pokemonEl = createPokemonCard(data,i,type);
+        poke_container.appendChild(pokemonEl);
+
     }
 }
 
-const createPokemonCard = (pokemon,index) => {
+const createPokemonCard = (pokemon,index,type) => {
     const pokemonEl = document.createElement('div')
     pokemonEl.classList.add('pokemon')
 
@@ -55,11 +58,11 @@ const createPokemonCard = (pokemon,index) => {
    // pokemonEl.style.backgroundColor = color;
 
     const pokemonInnerHTML = `
-    <div class="d-flex  text-muted pt-3 border-bottom">
+    <div class="d-flex  text-muted pt-1 border-bottom">
        <div class="img-container border-bottom align-items-baseline">
        <img src="${cover}"  class="p2 img-fluid img-thumbnail " alt="1">
         </div>
-       <div class="pb-3 p-2 mb-0 small lh-sm  w-100">
+       <div class="pb-1 p-2 mb-0 small lh-sm  w-100">
          <div class="d-flex justify-content-between">
            <strong class="text-gray-dark">${name}</strong>
          </div>
@@ -71,9 +74,9 @@ const createPokemonCard = (pokemon,index) => {
      </div>
     `
 
-    pokemonEl.innerHTML = pokemonInnerHTML
 
-    poke_container.appendChild(pokemonEl)
+    pokemonEl.innerHTML = pokemonInnerHTML
+  return pokemonEl
 }
 
 fetchPokemons().then(r => {

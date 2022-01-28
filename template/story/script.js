@@ -56,10 +56,6 @@ async function generateJoke() {
     const nextState = { nextId: nextId };
     window.history.replaceState(nextState, nextTitle, nextURL);
     let url = 'https://api.yyuan.wang/story/detail/'+id
-    if (type == 'pic'){
-      url  = 'https://api.yyuan.wang/picstory/detail/'+id
-    }
-
   const res = await fetch(url, config);
   const re = await res.json();
     data.push(re);
