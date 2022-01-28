@@ -27,14 +27,14 @@ const main_types = Object.keys(colors)
  }
 
 const fetchPokemons = async () => {
-    for (let i = 1; i <= pokemon_count; i++) {
-        await getPokemon(i)
-    }
+        await getPokemon()
 }
 
-const getPokemon = async (id) => {
+const getPokemon = async () => {
+    let param = await getURLParameters(window.location.href);
+    let type = param.type || 'huiben';
     //  const url = `https://api.yyuan.wang/story/all/${id}`
-    const url = `https://api.yyuan.wang/story/all`
+    const url = `https://api.yyuan.wang/story/${type}/all`
     const res = await fetch(url)
     const resData = await res.json();
     for (let i = 0; i < resData.length && i<50; i++) {
@@ -49,24 +49,20 @@ const createPokemonCard = (pokemon) => {
 
     const name = pokemon.title;
     let tag = pokemon.tag;
-    tag = tag.replace("相关标签", "标签");
     const id = pokemon.id;
-    let imId = id;
-    if (imId < 10) {
-        imId = "0" + imId;
-    }
+    let cover = pokemon.cover;
+
     const color = colors[Math.round(Math.random() * 10)];
 
     pokemonEl.style.backgroundColor = color;
 
     const pokemonInnerHTML = `
-    <div class="img-container center story-div ">
-        <img src="https://baby.yyuan.wang/assets/img/100${imId}.png" alt="${name}">
+    <div class="img-container  story-div ">
+        <img src="${cover}" alt="${name}">
     </div>
     <div class="info">
         <span class="storyId">${id}</span>
         <h4  class="long-text name">${name}</h4>
-        <small class="tag"<span>${tag}</span> </small>
     </div>
     `
 
@@ -77,7 +73,13 @@ const createPokemonCard = (pokemon) => {
         jumpToDetail(e)
     });
 }
-
+const getURLParameters = url =>
+    (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
+        (a, v) => (
+            (a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a
+        ),
+        {}
+    );
 fetchPokemons().then(r => {
 
 

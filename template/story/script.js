@@ -49,7 +49,6 @@ async function generateJoke() {
   };
     let param = await getURLParameters(window.location.href);
     let id = Number(param.id || 1);
-    let type = param.type || 'text';
     let nextId = id+1;
     const nextURL = replaceParamVal(window.location.href,"id",id,nextId);
     const nextTitle = '下一个故事';

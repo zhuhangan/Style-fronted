@@ -22,7 +22,6 @@ const main_types = Object.keys(colors)
  const jumpToDetail =  (e) => {
     let id  =  e.currentTarget.querySelector(".storyId").innerText;
      let url = "https://baby.yyuan.wang/story/index.html?id="+id;
-
      window.open(url, '_blank').focus();
  }
 
@@ -75,15 +74,16 @@ const createPokemonCard = (pokemon,index,type) => {
     `
 
 
-    pokemonEl.innerHTML = pokemonInnerHTML
+    pokemonEl.innerHTML = pokemonInnerHTML;
+    pokemonEl.addEventListener('click', (e)=>{
+        jumpToDetail(e)
+    });
   return pokemonEl
 }
 
 fetchPokemons().then(r => {
 
-    poke_container.addEventListener('click', (e)=>{
-        jumpToDetail(e)
-    }
 
-)
+
+
 })
