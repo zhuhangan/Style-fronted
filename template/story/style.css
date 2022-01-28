@@ -4,8 +4,7 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0;
-    background-image: url(bricks-459299_960_720.jpg);
-
+    background: linear-gradient(to right, #d4d3dd, #efefbb);;
 }
 
 .container {
