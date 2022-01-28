@@ -57,7 +57,7 @@ const createPokemonCard = (pokemon) => {
 
     const pokemonInnerHTML = `
     <div class="img-container center story-div ">
-        <img src="https://baby.yyuan.wang/assets/img/${pokemon.id}.jpg" alt="${name}">
+        <img src="https://baby.yyuan.wang/assets/img/100${pokemon.id}.png" alt="${name}">
     </div>
     <div class="info">
         <span class="storyId">${id}</span>
