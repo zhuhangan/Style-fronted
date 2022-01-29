@@ -64,6 +64,7 @@ async function generateJoke() {
       let story  = data.pop();
       jokeEl.innerHTML = story.content;
       titleEL.innerHTML = story.title;
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
 
     }
   }
@@ -71,7 +72,7 @@ async function generateJoke() {
 
 
 async function backHomeClick(){
-   window.location.href ="https://baby.yyuan.wang/pokedex/index.html"
+   window.location.href ="https://baby.yyuan.wang/navbar/index.html"
 }
 
 // USING .then()

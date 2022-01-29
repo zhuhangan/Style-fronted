@@ -37,7 +37,7 @@ const getPokemon = async () => {
     const url = `https://api.yyuan.wang/story/${type}/all`
     const res = await fetch(url)
     const resData = await res.json();
-    for (let i = 0; i < resData.length && i<50; i++) {
+    for (let i = 0; i < resData.length && i<100; i++) {
         let data = resData[i];
         createPokemonCard(data)
     }

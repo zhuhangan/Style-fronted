@@ -50,6 +50,7 @@ body {
     overflow: auto;
     left: 0;
     top: 0;
+    margin-bottom: 20px;
 }
 img {
     max-width: 100%;
@@ -91,6 +92,11 @@ img {
     right: 0;
     top: 0;
     bottom: 0;
+}
+.bottom-child{
+    position:fixed;
+    bottom:0;
+    margin-left: 10%;
 }
 .boxLoading :before {
      content: "";
