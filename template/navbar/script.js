@@ -76,7 +76,7 @@ const createPokemonCard = (pokemon,index,type) => {
 
     pokemonEl.innerHTML = pokemonInnerHTML;
     pokemonEl.addEventListener('click', (e)=>{
-        jumpToDetail(e)
+       // jumpToDetail(e)
     });
   return pokemonEl
 }
